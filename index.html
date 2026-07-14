@@ -1,226 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buffet ComoAdoro — Loja</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buffet ComoAdoro - Loja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-  :root{
-    --creme: #FBF0DA;
-    --creme-2: #F6E6C6;
-    --cafe: #3A2418;
-    --cafe-suave: #6B4C39;
-    --trigo: #D9A441;
-    --forno: #B8481E;
-    --forno-escuro: #8f3616;
-    --cereja: #A32638;
-  }
+        * { font-family: 'Inter', sans-serif; }
 
-  * { font-family: 'Plus Jakarta Sans', sans-serif; }
-  .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
 
-  html, body { overflow-x: hidden; max-width: 100vw; background: var(--creme); color: var(--cafe); }
+        body {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%);
+            min-height: 100vh;
+        }
 
-  .textura-header{
-    background-color: var(--cafe);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.055) 1px, transparent 0);
-    background-size: 18px 18px;
-  }
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
 
-  .cartao{
-    background: #fff;
-    border-radius: 1.25rem;
-    box-shadow: 0 1px 2px rgba(58,36,24,0.06), 0 8px 24px -12px rgba(58,36,24,0.18);
-    transition: transform .25s ease, box-shadow .25s ease;
-  }
-  .cartao:hover{ transform: translateY(-4px); box-shadow: 0 4px 10px rgba(58,36,24,0.08), 0 20px 32px -16px rgba(58,36,24,0.28); }
+        .card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
 
-  .etiqueta{
-    position: absolute; top: -10px; right: 14px;
-    background: var(--cereja);
-    color: #fff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 0.95rem;
-    padding: 0.4rem 0.85rem 0.45rem;
-    border-radius: 0.4rem;
-    transform: rotate(3deg);
-    box-shadow: 0 6px 14px -4px rgba(163,38,56,0.55);
-    z-index: 2;
-  }
-  .etiqueta::before{
-    content:'';
-    position:absolute; top:-5px; left:50%; margin-left:-4px;
-    width:8px; height:8px; border-radius:50%;
-    background: var(--creme);
-    border: 2px solid var(--forno-escuro);
-  }
+        .btn {
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+            overflow: hidden;
+        }
 
-  .campo-busca:focus{ outline: none; box-shadow: 0 0 0 3px rgba(217,164,65,0.45); }
-  select.campo-ordenar:focus{ outline: none; box-shadow: 0 0 0 3px rgba(217,164,65,0.45); }
+        .btn:active { transform: scale(0.95); }
 
-  .fade-in{ animation: subirFade .5s ease both; }
-  @keyframes subirFade{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform:none; } }
+        .btn-primary {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
 
-  @media (prefers-reduced-motion: reduce){
-    .cartao, .cartao:hover{ transition:none; transform:none; }
-    .fade-in{ animation:none; }
-  }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            box-shadow: 0 10px 15px -3px rgba(220,38,38,0.3);
+        }
 
-  ::selection{ background: var(--trigo); color: var(--cafe); }
-</style>
+        .input-field {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        .input-field:focus {
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245,158,11,0.1);
+            outline: none;
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card, .fade-in { transition: none; animation: none; }
+        }
+    </style>
 </head>
 <body class="min-h-screen">
 
-  <header class="textura-header px-4 py-12 sm:py-16 text-center relative">
-    <p class="uppercase tracking-[0.25em] text-xs sm:text-sm mb-3" style="color: var(--trigo);">Feito com carinho, do jeitinho de casa</p>
-    <h1 class="display text-4xl sm:text-5xl font-semibold text-white">Buffet ComoAdoro</h1>
-  </header>
+    <div class="container mx-auto px-3 sm:px-4 py-6 max-w-7xl overflow-x-hidden">
 
-  <div class="max-w-5xl mx-auto px-4 -mt-6 relative z-10">
-    <div class="cartao p-2 flex flex-col sm:flex-row gap-2">
-      <div class="flex-1 relative">
-        <i class="fas fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-sm" style="color: var(--cafe-suave);"></i>
-        <input id="busca" type="text" placeholder="Buscar produto..." autocomplete="off"
-          class="campo-busca w-full rounded-xl pl-11 pr-4 py-3.5 border-0 bg-transparent text-base"
-          oninput="aplicarFiltros()">
-      </div>
-      <select id="ordenar" onchange="aplicarFiltros()" class="campo-ordenar rounded-xl px-4 py-3.5 border-0 bg-transparent text-sm font-medium" style="color: var(--cafe-suave);">
-        <option value="padrao">Ordem do cardápio</option>
-        <option value="nome">Nome, A–Z</option>
-        <option value="menor-preco">Menor preço</option>
-        <option value="maior-preco">Maior preço</option>
-      </select>
+        <div class="card p-6 sm:p-10 mb-6 sm:mb-8 text-center">
+            <h1 class="text-2xl sm:text-4xl font-bold mb-2"><i class="fas fa-utensils text-red-500"></i> Buffet ComoAdoro</h1>
+            <p class="text-gray-500 text-sm sm:text-base">Confira nossos produtos</p>
+        </div>
+
+        <div class="card p-4 sm:p-5 mb-6 sm:mb-8">
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="busca" oninput="aplicarFiltros()" placeholder="🔍 Buscar produto..." autocomplete="off" class="input-field w-full sm:flex-1 rounded-xl px-4 py-3">
+                <select id="ordenar" onchange="aplicarFiltros()" class="input-field w-full sm:w-auto rounded-xl px-4 py-3">
+                    <option value="padrao">Ordenar por Padrão</option>
+                    <option value="nome">Ordenar por Nome</option>
+                    <option value="menor-preco">Menor Preço</option>
+                    <option value="maior-preco">Maior Preço</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="carregando" class="card p-5 sm:p-8 text-center py-16 sm:py-20">
+            <i class="fas fa-circle-notch fa-spin text-5xl mb-4 text-amber-500"></i>
+            <p class="text-gray-500">Carregando produtos...</p>
+        </div>
+
+        <div id="erro" class="hidden card p-5 sm:p-8 text-center py-16 sm:py-20">
+            <i class="fas fa-triangle-exclamation text-6xl mb-4 text-gray-300"></i>
+            <p class="font-semibold mb-1">Não foi possível carregar os produtos</p>
+            <p class="text-sm text-gray-500 mb-5">Verifique sua internet e tente novamente.</p>
+            <button onclick="carregarLoja()" class="btn btn-primary px-6 py-3 rounded-xl font-semibold"><i class="fas fa-rotate-right mr-2"></i> Tentar Novamente</button>
+        </div>
+
+        <div id="vazio-catalogo" class="hidden card p-5 sm:p-8 text-center py-16 sm:py-20">
+            <i class="fas fa-store-slash text-6xl mb-4 text-gray-300"></i>
+            <p class="font-semibold mb-1">Nenhum produto disponível</p>
+            <p class="text-sm text-gray-500">Volte mais tarde pra conferir as novidades.</p>
+        </div>
+
+        <div id="vazio-busca" class="hidden card p-5 sm:p-8 text-center py-16 sm:py-20">
+            <i class="fas fa-magnifying-glass text-6xl mb-4 text-gray-300"></i>
+            <p class="font-semibold mb-1">Nenhum produto encontrado</p>
+            <p class="text-sm text-gray-500">Tente buscar por outro termo.</p>
+        </div>
+
+        <p id="contador" class="hidden text-sm text-gray-500 mb-4"></p>
+        <div id="grid" class="hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"></div>
+
+        <p class="text-center text-xs text-gray-400 mt-8 mb-2">Buffet ComoAdoro</p>
     </div>
-  </div>
-
-  <main class="max-w-5xl mx-auto px-4 py-10 sm:py-12">
-
-    <div id="carregando" class="text-center py-24">
-      <i class="fas fa-circle-notch fa-spin text-3xl mb-4" style="color: var(--forno);"></i>
-      <p style="color: var(--cafe-suave);">Carregando o cardápio...</p>
-    </div>
-
-    <div id="erro" class="hidden text-center py-24 max-w-sm mx-auto">
-      <i class="fas fa-plate-wheat text-4xl mb-4" style="color: var(--trigo);"></i>
-      <p class="font-semibold mb-1">Não deu pra carregar o cardápio agora</p>
-      <p class="text-sm" style="color: var(--cafe-suave);">Verifique sua internet e tente de novo em instantes.</p>
-      <button onclick="carregarLoja()" class="mt-5 px-5 py-2.5 rounded-xl font-semibold text-white text-sm" style="background: var(--forno);">Tentar novamente</button>
-    </div>
-
-    <div id="vazio-catalogo" class="hidden text-center py-24 max-w-sm mx-auto">
-      <i class="fas fa-bread-slice text-4xl mb-4" style="color: var(--trigo);"></i>
-      <p class="font-semibold mb-1">Nenhum produto no cardápio ainda</p>
-      <p class="text-sm" style="color: var(--cafe-suave);">Volte mais tarde pra conferir as novidades.</p>
-    </div>
-
-    <div id="vazio-busca" class="hidden text-center py-24 max-w-sm mx-auto">
-      <i class="fas fa-magnifying-glass text-4xl mb-4" style="color: var(--trigo);"></i>
-      <p class="font-semibold mb-1">Nada por aqui com esse nome</p>
-      <p class="text-sm" style="color: var(--cafe-suave);">Tenta buscar por outra palavra.</p>
-    </div>
-
-    <p id="contador" class="hidden text-sm mb-5" style="color: var(--cafe-suave);"></p>
-    <div id="grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7"></div>
-  </main>
-
-  <footer class="text-center pb-10 px-4 text-xs" style="color: var(--cafe-suave);">
-    Buffet ComoAdoro
-  </footer>
 
 <script>
-  // Ajuste aqui se o loja.json estiver em outro repositório/caminho.
-  const URL_LOJA_JSON = 'https://raw.githubusercontent.com/AlyssonEustaquio/comoadoro/main/loja.json';
+    // Ajuste aqui se o loja.json estiver em outro repositório/caminho.
+    const URL_LOJA_JSON = 'https://raw.githubusercontent.com/AlyssonEustaquio/comoadoro/main/loja.json';
 
-  let todosProdutos = [];
+    let todosProdutos = [];
 
-  function moeda(v){
-    return new Intl.NumberFormat('pt-BR', { style:'currency', currency:'BRL' }).format(Number(v)||0);
-  }
-
-  function escapeHtml(s){
-    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  async function carregarLoja(){
-    document.getElementById('erro').classList.add('hidden');
-    document.getElementById('vazio-catalogo').classList.add('hidden');
-    document.getElementById('vazio-busca').classList.add('hidden');
-    document.getElementById('grid').classList.add('hidden');
-    document.getElementById('contador').classList.add('hidden');
-    document.getElementById('carregando').classList.remove('hidden');
-
-    try{
-      const resp = await fetch(URL_LOJA_JSON + (URL_LOJA_JSON.includes('?') ? '&' : '?') + 't=' + Date.now());
-      if(!resp.ok) throw new Error('status ' + resp.status);
-      const dados = await resp.json();
-      todosProdutos = Array.isArray(dados) ? dados : [];
-      document.getElementById('carregando').classList.add('hidden');
-
-      if(todosProdutos.length === 0){
-        document.getElementById('vazio-catalogo').classList.remove('hidden');
-        return;
-      }
-      document.getElementById('grid').classList.remove('hidden');
-      document.getElementById('contador').classList.remove('hidden');
-      aplicarFiltros();
-    }catch(e){
-      console.error('Falha ao carregar loja.json:', e);
-      document.getElementById('carregando').classList.add('hidden');
-      document.getElementById('erro').classList.remove('hidden');
+    function moeda(v) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(v) || 0);
     }
-  }
 
-  function aplicarFiltros(){
-    const busca = document.getElementById('busca').value.trim().toLowerCase();
-    const ordem = document.getElementById('ordenar').value;
+    function escapeHtml(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
 
-    let lista = todosProdutos.filter(p =>
-      (p.nome||'').toLowerCase().includes(busca) || (p.descricao||'').toLowerCase().includes(busca)
-    );
+    async function carregarLoja() {
+        document.getElementById('erro').classList.add('hidden');
+        document.getElementById('vazio-catalogo').classList.add('hidden');
+        document.getElementById('vazio-busca').classList.add('hidden');
+        document.getElementById('grid').classList.add('hidden');
+        document.getElementById('contador').classList.add('hidden');
+        document.getElementById('carregando').classList.remove('hidden');
 
-    if(ordem === 'nome') lista.sort((a,b) => (a.nome||'').localeCompare(b.nome||'', 'pt-BR'));
-    else if(ordem === 'menor-preco') lista.sort((a,b) => (a.preco||0) - (b.preco||0));
-    else if(ordem === 'maior-preco') lista.sort((a,b) => (b.preco||0) - (a.preco||0));
+        try {
+            const resp = await fetch(URL_LOJA_JSON + (URL_LOJA_JSON.includes('?') ? '&' : '?') + 't=' + Date.now());
+            if(!resp.ok) throw new Error('status ' + resp.status);
+            const dados = await resp.json();
+            todosProdutos = Array.isArray(dados) ? dados : [];
+            document.getElementById('carregando').classList.add('hidden');
 
-    renderizarGrid(lista);
+            if(todosProdutos.length === 0) {
+                document.getElementById('vazio-catalogo').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('grid').classList.remove('hidden');
+            document.getElementById('contador').classList.remove('hidden');
+            aplicarFiltros();
+        } catch(e) {
+            console.error('Falha ao carregar loja.json:', e);
+            document.getElementById('carregando').classList.add('hidden');
+            document.getElementById('erro').classList.remove('hidden');
+        }
+    }
 
-    const contador = document.getElementById('contador');
-    contador.textContent = lista.length === 1 ? '1 produto' : `${lista.length} produtos`;
+    function aplicarFiltros() {
+        const busca = document.getElementById('busca').value.trim().toLowerCase();
+        const ordem = document.getElementById('ordenar').value;
 
-    document.getElementById('vazio-busca').classList.toggle('hidden', lista.length !== 0);
-    document.getElementById('grid').classList.toggle('hidden', lista.length === 0);
-    contador.classList.toggle('hidden', lista.length === 0);
-  }
+        let lista = todosProdutos.filter(p =>
+            (p.nome||'').toLowerCase().includes(busca) || (p.descricao||'').toLowerCase().includes(busca)
+        );
 
-  function tratarErroImagem(img){
-    img.outerHTML = '<div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--creme-2), var(--trigo));"><i class="fas fa-utensils text-3xl" style="color: var(--cafe);opacity:.35;"></i></div>';
-  }
+        if(ordem === 'nome') lista.sort((a,b) => (a.nome||'').localeCompare(b.nome||'', 'pt-BR'));
+        else if(ordem === 'menor-preco') lista.sort((a,b) => (a.preco||0) - (b.preco||0));
+        else if(ordem === 'maior-preco') lista.sort((a,b) => (b.preco||0) - (a.preco||0));
 
-  function renderizarGrid(lista){
-    const grid = document.getElementById('grid');
-    grid.innerHTML = lista.map((p, i) => `
-      <article class="cartao overflow-hidden relative fade-in" style="animation-delay:${Math.min(i,8) * 40}ms">
-        <div class="relative h-44 sm:h-48">
-          ${p.imagem
-            ? `<img src="${p.imagem}" alt="${escapeHtml(p.nome)}" loading="lazy" class="w-full h-full object-cover" onerror="tratarErroImagem(this)">`
-            : `<div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--creme-2), var(--trigo));"><i class="fas fa-utensils text-3xl" style="color: var(--cafe);opacity:.35;"></i></div>`}
-          <span class="etiqueta">${moeda(p.preco)}</span>
-        </div>
-        <div class="p-4 sm:p-5">
-          <h3 class="display text-lg font-semibold mb-1" style="color: var(--cafe);">${escapeHtml(p.nome) || 'Produto'}</h3>
-          ${p.descricao ? `<p class="text-sm leading-relaxed" style="color: var(--cafe-suave);">${escapeHtml(p.descricao)}</p>` : ''}
-        </div>
-      </article>
-    `).join('');
-  }
+        renderizarGrid(lista);
 
-  carregarLoja();
+        const contador = document.getElementById('contador');
+        contador.textContent = lista.length === 1 ? '1 produto encontrado' : `${lista.length} produtos encontrados`;
+
+        document.getElementById('vazio-busca').classList.toggle('hidden', lista.length !== 0);
+        document.getElementById('grid').classList.toggle('hidden', lista.length === 0);
+        contador.classList.toggle('hidden', lista.length === 0);
+    }
+
+    function tratarErroImagem(img) {
+        img.outerHTML = '<div class="w-full h-full flex items-center justify-center bg-amber-50"><i class="fas fa-utensils text-3xl text-amber-300"></i></div>';
+    }
+
+    function renderizarGrid(lista) {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = lista.map(p => `
+            <div class="card overflow-hidden fade-in">
+                <div class="w-full h-40 sm:h-48">
+                    ${p.imagem
+                        ? `<img src="${p.imagem}" alt="${escapeHtml(p.nome)}" loading="lazy" class="w-full h-full object-cover" onerror="tratarErroImagem(this)">`
+                        : `<div class="w-full h-full flex items-center justify-center bg-amber-50"><i class="fas fa-utensils text-3xl text-amber-300"></i></div>`}
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="flex justify-between items-start gap-2 mb-1">
+                        <h3 class="font-bold text-lg break-words">${escapeHtml(p.nome) || 'Produto'}</h3>
+                        <span class="font-bold text-green-600 flex-shrink-0">${moeda(p.preco)}</span>
+                    </div>
+                    ${p.descricao ? `<p class="text-sm text-gray-500 break-words">${escapeHtml(p.descricao)}</p>` : ''}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    carregarLoja();
 </script>
 </body>
 </html>
